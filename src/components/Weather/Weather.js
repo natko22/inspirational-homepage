@@ -1,29 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Box, Typography, Button } from "@mui/material";
-import { setWeather } from "../../features/weatherSlice";
+import { Box, Typography, Button, CircularProgress } from "@mui/material";
+import { fetchWeather } from "../../features/weatherSlice";
 
 const Weather = () => {
   const dispatch = useDispatch();
   const weather = useSelector((state) => state.weather.data);
+  const status = useSelector((state) => state.weather.status);
+  const error = useSelector((state) => state.weather.error);
 
-  const updateWeather = () => {
-    const newWeather = {
-      name: "Los Angeles",
-      weather: [{ description: "Sunny" }],
-      main: { temp: 28 },
+  const [coordinates, setCoordinates] = useState(null);
+
+  useEffect(() => {
+    // Get the user's current location
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setCoordinates({ lat: latitude, lon: longitude });
+          },
+          (error) => {
+            console.error("Error getting location: ", error);
+            setCoordinates(null);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+        setCoordinates(null);
+      }
     };
-    dispatch(setWeather(newWeather));
-  };
 
-  if (!weather || !weather.name) {
-    return <Typography variant="h6">Loading weather data...</Typography>;
+    getLocation();
+  }, []);
+
+  useEffect(() => {
+    if (coordinates) {
+      dispatch(fetchWeather(coordinates));
+    }
+  }, [coordinates, dispatch]);
+
+  if (status === "loading") {
+    return <CircularProgress />;
+  }
+
+  if (status === "failed") {
+    return (
+      <Typography variant="h6" color="error">
+        Error: {error}
+      </Typography>
+    );
+  }
+
+  if (!weather) {
+    return <Typography variant="h6">No weather data available</Typography>;
   }
 
   return (
     <Box sx={{ backgroundColor: "#f0f0f0", padding: 2, borderRadius: 2 }}>
       <Typography variant="h5" component="div" sx={{ color: "#1F363D" }}>
-        Weather in {weather.name}
+        Weather at your location
       </Typography>
       <Typography variant="body1" sx={{ color: "#40798C" }}>
         {weather.weather[0].description}
@@ -31,13 +67,6 @@ const Weather = () => {
       <Typography variant="body1" sx={{ color: "#40798C" }}>
         {weather.main.temp}°C
       </Typography>
-      <Button
-        variant="contained"
-        onClick={updateWeather}
-        sx={{ marginTop: 2, backgroundColor: "#70A9A1", color: "#fff" }}
-      >
-        Update Weather
-      </Button>
     </Box>
   );
 };
