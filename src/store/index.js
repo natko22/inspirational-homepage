@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import weatherReducer from "./weatherSlice";
-import imageReducer from "./imageSlice";
-import quoteReducer from "./quoteSlice";
-import goalsReducer from "./goalsSlice";
+import weatherReducer from "../features/weatherSlice";
+import imageReducer from "../features/imageSlice";
+import quoteReducer from "../features/quoteSlice";
+import goalsReducer from "../features/goalsSlice";
 
 const store = configureStore({
   reducer: {

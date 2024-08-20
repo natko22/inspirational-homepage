@@ -1,4 +1,3 @@
-// src/mockData/weather.js
 const mockWeatherData = {
   name: "New York",
   weather: [{ description: "Clear sky" }],

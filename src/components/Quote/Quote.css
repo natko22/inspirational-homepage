@@ -1,0 +1,23 @@
+.quote-container {
+  background-color: #cfe0c3;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.quote-container h2 {
+  color: #1f363d;
+}
+
+.quote-container blockquote {
+  color: #70a9a1;
+  font-style: italic;
+}
+
+.quote-container button {
+  background-color: #40798c;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}

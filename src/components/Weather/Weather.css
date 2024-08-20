@@ -1,0 +1,22 @@
+.weather-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.weather-container h2 {
+  color: #1f363d;
+}
+
+.weather-container p {
+  color: #40798c;
+}
+
+.weather-container button {
+  background-color: #70a9a1;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
