@@ -1,5 +1,5 @@
 .quote-container {
-  background-color: #cfe0c3;
+  background-color: #cfe0c353;
   padding: 20px;
   border-radius: 8px;
 }
@@ -9,7 +9,7 @@
 }
 
 .quote-container blockquote {
-  color: #70a9a1;
+  color: #70a9a164;
   font-style: italic;
 }
 

@@ -1,33 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Box, Typography, Button } from "@mui/material";
-import { setQuote } from "../../features/quoteSlice";
+import { Box, Typography, Button, CircularProgress } from "@mui/material";
+import { fetchQuote } from "../../features/quoteSlice";
 
 const Quote = () => {
   const dispatch = useDispatch();
   const quote = useSelector((state) => state.quote.data);
+  const status = useSelector((state) => state.quote.status);
+  const error = useSelector((state) => state.quote.error);
+
+  useEffect(() => {
+    dispatch(fetchQuote());
+  }, [dispatch]);
 
   const updateQuote = () => {
-    const newQuote = {
-      content: "Stay positive, work hard, make it happen.",
-      author: "Unknown",
-    };
-    dispatch(setQuote(newQuote));
+    dispatch(fetchQuote());
   };
 
-  if (!quote || !quote.content) {
-    return <Typography variant="h6">Loading quote...</Typography>;
+  if (status === "loading") {
+    return <CircularProgress />;
+  }
+
+  if (status === "failed") {
+    return (
+      <Typography variant="h6" color="error">
+        Error: {error}
+      </Typography>
+    );
+  }
+
+  if (!quote) {
+    return <Typography variant="h6">No quote available</Typography>;
   }
 
   return (
     <Box sx={{ backgroundColor: "#CFE0C3", padding: 2, borderRadius: 2 }}>
       <Typography variant="h5" component="div" sx={{ color: "#1F363D" }}>
-        Inspirational Quote
-      </Typography>
-      <Typography
-        variant="body1"
-        sx={{ fontStyle: "italic", color: "#70A9A1" }}
-      >
         "{quote.content}" - <em>{quote.author}</em>
       </Typography>
       <Button
@@ -35,7 +43,7 @@ const Quote = () => {
         onClick={updateQuote}
         sx={{ marginTop: 2, backgroundColor: "#40798C", color: "#fff" }}
       >
-        Update Quote
+        New Quote
       </Button>
     </Box>
   );
