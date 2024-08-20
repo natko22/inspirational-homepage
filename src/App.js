@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, Grid, Box } from "@mui/material";
+import Header from "./components/Header/Header";
+import Weather from "./components/Weather/Weather";
+import Image from "./components/Image/Image";
+import Quote from "./components/Quote/Quote";
+import ToDoList from "./components/ToDoList/ToDoList";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header />
+      <Box mt={4}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <Weather />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Image />
+          </Grid>
+          <Grid item xs={12}>
+            <Quote />
+          </Grid>
+          <Grid item xs={12}>
+            <ToDoList />
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
-}
+};
 
 export default App;

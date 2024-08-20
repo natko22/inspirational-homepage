@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Import Provider from react-redux and the store
+import { Provider } from "react-redux";
+import store from "./store"; // Adjust the path if your store is in a different directory
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      {" "}
+      {/* Wrap the App component with Provider */}
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
