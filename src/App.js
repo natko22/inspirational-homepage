@@ -5,26 +5,28 @@ import Weather from "./components/Weather/Weather";
 import Quote from "./components/Quote/Quote";
 import ToDoList from "./components/ToDoList/ToDoList";
 import BackgroundImage from "./components/Image/Image";
-import mockImageData from "./mockData/image";
 
 const App = () => {
-  const [backgroundImage, setBackgroundImage] = useState(mockImageData[0].url);
+  const [backgroundImage, setBackgroundImage] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const img = new window.Image();
-    img.src = backgroundImage;
-    img.onload = () => {
-      setIsLoaded(true);
-      setError(null);
-    };
-    img.onerror = () => {
-      setIsLoaded(false);
-      setError(`Failed to load image: ${backgroundImage}`);
-      console.error("Failed to load image:", backgroundImage);
-      setBackgroundImage(mockImageData[0].url); // Revert to first image if the new one fails
-    };
+    console.log("Background Image URL:", backgroundImage); // Debug log
+    if (backgroundImage) {
+      const img = new window.Image();
+      img.src = backgroundImage;
+      img.onload = () => {
+        console.log("Image loaded successfully");
+        setIsLoaded(true);
+        setError(null);
+      };
+      img.onerror = () => {
+        console.error("Failed to load image:", backgroundImage);
+        setIsLoaded(false);
+        setError(`Failed to load image: ${backgroundImage}`);
+      };
+    }
   }, [backgroundImage]);
 
   return (
