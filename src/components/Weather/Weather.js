@@ -1,23 +1,16 @@
+// src/components/Weather/Weather.js
 import React from "react";
-import { useSelector } from "react-redux";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import mockWeatherData from "../../mockData/weather";
 
 const Weather = () => {
-  const { data, loading, error } = useSelector((state) => state.weather);
-
-  if (loading) return <CircularProgress />;
-  if (error) return <Typography color="error">{error}</Typography>;
+  const { name, weather, main } = mockWeatherData;
 
   return (
-    <Box>
-      {data && (
-        <>
-          <Typography variant="h4">Weather in {data.name}</Typography>
-          <Typography variant="h6">{data.weather[0].description}</Typography>
-          <Typography variant="h6">{data.main.temp}°C</Typography>
-        </>
-      )}
-    </Box>
+    <div>
+      <h2>Weather in {name}</h2>
+      <p>{weather[0].description}</p>
+      <p>{main.temp}°C</p>
+    </div>
   );
 };
 
