@@ -1,12 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-const goalsSlice = createSlice({
+const getRandomColor = () => {
+  const colors = ["#1F363D", "#40798C", "#70A9A1", "#9EC1A3", "#CFE0C3"];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+
+const todolistSlice = createSlice({
   name: "goals",
   initialState: [],
   reducers: {
     addGoal: (state, action) => {
-      state.push({ id: uuidv4(), text: action.payload.text, completed: false });
+      state.push({
+        id: uuidv4(),
+        text: action.payload.text,
+        completed: false,
+        color: getRandomColor(), // Assign color once when the goal is created
+      });
     },
     removeGoal: (state, action) => {
       return state.filter((goal) => goal.id !== action.payload);
@@ -20,6 +30,6 @@ const goalsSlice = createSlice({
   },
 });
 
-export const { addGoal, removeGoal, toggleGoal } = goalsSlice.actions;
+export const { addGoal, removeGoal, toggleGoal } = todolistSlice.actions;
 
-export default goalsSlice.reducer;
+export default todolistSlice.reducer;
