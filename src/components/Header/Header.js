@@ -1,18 +1,20 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 const Header = () => {
   return (
-    <AppBar
-      position="static"
-      sx={{ backgroundColor: "#1F363D", padding: "10px" }}
+    <Box
+      sx={{
+        backgroundColor: "rgba(0, 0, 0, 0.5)", // Black with 50% opacity
+        padding: "10px",
+        borderRadius: "8px",
+        textAlign: "center",
+      }}
     >
-      <Toolbar>
-        <Typography variant="h6" sx={{ color: "#CFE0C3", fontWeight: "bold" }}>
-          Inspirational Homepage
-        </Typography>
-      </Toolbar>
-    </AppBar>
+      <Typography variant="h2" color="#CFE0C3">
+        Inspirational Homepage
+      </Typography>
+    </Box>
   );
 };
 

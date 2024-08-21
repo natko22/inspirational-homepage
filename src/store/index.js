@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import weatherReducer from "../features/weatherSlice";
 import imageReducer from "../features/imageSlice";
 import quoteReducer from "../features/quoteSlice";
-import goalsReducer from "../features/goalsSlice";
+import goalsReducer from "../features/todolistSlice";
 
 const store = configureStore({
   reducer: {
