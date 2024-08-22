@@ -12,17 +12,14 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("Background Image URL:", backgroundImage); // Debug log
     if (backgroundImage) {
       const img = new window.Image();
       img.src = backgroundImage;
       img.onload = () => {
-        console.log("Image loaded successfully");
         setIsLoaded(true);
         setError(null);
       };
       img.onerror = () => {
-        console.error("Failed to load image:", backgroundImage);
         setIsLoaded(false);
         setError(`Failed to load image: ${backgroundImage}`);
       };
@@ -44,19 +41,25 @@ const App = () => {
         <Header />
         <Box mt={4}>
           <Grid container spacing={3}>
+            {/* Left column with ToDoList and Quote */}
             <Grid item xs={12} md={6}>
-              <Weather />
+              <Box mb={3}>
+                <ToDoList />
+              </Box>
+              <Box>
+                <Quote />
+              </Box>
             </Grid>
 
-            <Grid item xs={12}>
-              <ToDoList />
+            {/* Right column with Weather and BackgroundImage */}
+            <Grid item xs={12} md={6}>
+              <Box mb={3}>
+                <Weather />
+              </Box>
+              <Box>
+                <BackgroundImage setBackgroundImage={setBackgroundImage} />
+              </Box>
             </Grid>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <BackgroundImage setBackgroundImage={setBackgroundImage} />
-          </Grid>
-          <Grid item xs={12}>
-            <Quote />
           </Grid>
         </Box>
         {error && (

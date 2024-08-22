@@ -71,13 +71,18 @@ const BackgroundImage = ({ setBackgroundImage }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        justifyContent: "flex-end",
+        backgroundColor: "rgba(255, 255, 255, 0.302)",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+        marginTop: "19rem",
+        width: "92%",
+        minHeight: "180px",
+        // backgroundColor: "rgba(0, 0, 0, 0.5)",
         padding: "20px",
         borderRadius: "8px",
       }}
     >
-      <Typography variant="h6" color="#FFFFFF" mb={2}>
+      <Typography variant="h5" color="black" mb={2}>
         Change the Background
       </Typography>
       <TextField
@@ -110,7 +115,7 @@ const BackgroundImage = ({ setBackgroundImage }) => {
           onClick={changeBackground}
           sx={{
             backgroundColor: "#808080",
-            color: "#FFFFFF",
+            color: "black",
             "&:hover": {
               backgroundColor: "#696969",
             },

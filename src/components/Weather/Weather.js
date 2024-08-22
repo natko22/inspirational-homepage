@@ -87,27 +87,34 @@ const Weather = () => {
     <Box
       sx={{
         position: "absolute",
-        top: "8rem",
-        right: "2rem",
+        // top: "12rem",
+        // right: "2rem",
         textAlign: "right",
         display: "flex",
         alignItems: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.75)",
+        backgroundColor: "rgba(255, 255, 255, 0.302)",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
         borderRadius: "5px",
-        padding: "10px",
+        padding: "20px",
+        width: "30%",
+        height: "22%",
       }}
     >
       <Box sx={{ marginRight: "8px" }}>
         <img src={iconUrl} alt={weather.weather[0].description} />
       </Box>
       <Box>
-        <Typography variant="h5" component="div" sx={{ color: "#FFFFFF" }}>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{ color: "black", textAlign: "right" }}
+        >
           Weather at your location
         </Typography>
-        <Typography variant="body1" sx={{ color: "#E0E0E0" }}>
+        <Typography variant="body1" sx={{ color: "black" }}>
           {weather.weather[0].description}
         </Typography>
-        <Typography variant="body1" sx={{ color: "#E0E0E0" }}>
+        <Typography variant="body1" sx={{ color: "black" }}>
           {weather.main.temp}°C
         </Typography>
       </Box>

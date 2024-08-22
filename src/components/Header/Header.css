@@ -9,5 +9,7 @@
 
 .header {
   font-family: "KramforsDemoRegular", "Times New Roman", Times, serif;
-  color: white;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.302);
+  border-radius: 10px;
 }

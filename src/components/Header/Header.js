@@ -9,6 +9,8 @@ const Header = () => {
         padding: "10px",
         borderRadius: "2px",
         textAlign: "center",
+        width: "110%",
+        marginLeft: "-4rem",
       }}
     >
       <Typography className="header" variant="h1">

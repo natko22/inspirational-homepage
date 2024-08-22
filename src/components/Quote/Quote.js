@@ -19,7 +19,7 @@ const Quote = () => {
   };
 
   if (status === "loading") {
-    return <CircularProgress sx={{ color: "#FFFFFF" }} />;
+    return <CircularProgress sx={{ color: "black" }} />;
   }
 
   if (status === "failed") {
@@ -32,7 +32,7 @@ const Quote = () => {
 
   if (!quote) {
     return (
-      <Typography variant="h6" sx={{ color: "#FFFFFF" }}>
+      <Typography variant="h6" sx={{ color: "black" }}>
         No quote available
       </Typography>
     );
@@ -41,19 +41,38 @@ const Quote = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(0, 0, 0, 0.75)",
-        padding: 2,
+        width: "80%",
+        padding: 5,
         borderRadius: 2,
-        marginTop: "10rem",
+        marginTop: "3rem",
+        backgroundColor: "rgba(255, 255, 255, 0.302)",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        minHeight: "100px",
       }}
     >
-      <Typography variant="h5" component="div" sx={{ color: "#FFFFFF" }}>
+      <Typography
+        variant="h5"
+        component="div"
+        sx={{ color: "black", textAlign: "center" }}
+      >
         "{quote.content}" - <em>{quote.author}</em>
       </Typography>
       <Button
         className="quote-button"
         variant="contained"
         onClick={updateQuote}
+        sx={{
+          backgroundColor: "#808080",
+          color: "black",
+          marginTop: "1rem",
+          "&:hover": {
+            backgroundColor: "#696969",
+          },
+        }}
       >
         New Quote
       </Button>
