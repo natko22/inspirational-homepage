@@ -56,7 +56,7 @@ const ToDoList = () => {
       }}
     >
       {showConfetti && <Confetti />}
-      <h2 style={{ color: "black" }}>Today's Goals</h2>
+      <h2 style={{ color: "black", fontWeight: "400" }}>Today's Goals</h2>
       <TextField
         label="Write your goal"
         variant="outlined"
