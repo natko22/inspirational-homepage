@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Inspirational Homepage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Inspirational Homepage is a dynamic web application that serves as a personalized dashboard for users. It includes a to-do list, weather updates, daily quotes, and a customizable background, all designed to inspire and organize your day.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup and Installation](#setup-and-installation)
+- [Environment Variables](#environment-variables)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Weather Updates:** Displays real-time weather data for your location.
+- **Daily Quotes:** Fetches and displays a new inspirational quote ,simply by clicking the button new quote.
+- **To-Do List:** Allows users to add, remove, and mark goals as complete, with a celebratory effect.
+- **Customizable Background:** Users can change the background image by searching for images from Unsplash.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React:** Front-end framework
+- **Redux Toolkit:** State management
+- **Material-UI:** UI components and styling
+- **Unsplash API:** Background image search
+- **OpenWeatherMap API:** Weather data
+- **Quotable.io API:** Inspirational quotes
+- **React Confetti:** Visual celebration effect
+- **UUID:** Generating unique identifiers
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup and Installation
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Make sure you have the following installed:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Node.js** (>=14.x recommended)
+- **npm** (comes with Node.js) or **Yarn**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. Clone the repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   git clone https://github.com/natko22/inspirational-homepage.git
+   cd inspirational-homepage
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   # or if you prefer Yarn
+   yarn install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Set up environment variables:
+   Create a `.env` file in the root of your project and add your API keys.
 
-## Learn More
+   ```makefile
+   REACT_APP_WEATHER_API_KEY=your_openweathermap_api_key
+   REACT_APP_UNSPLASH_ACCESS_KEY=your_unsplash_access_key
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Start the development server:
+   ```bash
+   npm start
+   # or with Yarn
+   yarn start
+   ```
+   The application will run on `http://localhost:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Environment Variables
 
-### Code Splitting
+- `REACT_APP_WEATHER_API_KEY`: Your API key for OpenWeatherMap.
+- `REACT_APP_UNSPLASH_ACCESS_KEY`: Your API key for Unsplash.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+These keys should be kept secret and not committed to version control.
 
-### Analyzing the Bundle Size
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Weather Widget:** Displays the current weather at your location.
+- **Quote Generator:** Refreshes to show a new quote with each click of the "New Quote" button.
+- **To-Do List:** Add new goals by typing in the input box and pressing Enter. Mark goals as complete or delete them using the icons.
+- **Change Background:** Search for new background images or cycle through existing ones.
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are welcome! Please follow these steps:
 
-### Advanced Configuration
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
