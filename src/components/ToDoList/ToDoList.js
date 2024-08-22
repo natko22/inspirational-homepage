@@ -49,7 +49,8 @@ const ToDoList = () => {
         padding: "10px",
         borderRadius: "8px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
-        width: "90%",
+        width: { xs: "80%", md: "90%" },
+
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -99,10 +100,18 @@ const ToDoList = () => {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "#808080",
+            backgroundColor: "#E0E1DD",
             color: "black",
+            transition:
+              "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
             "&:hover": {
-              backgroundColor: "#696969",
+              backgroundColor: "#D1D3CF",
+              transform: "scale(1.05)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+            },
+            "&:active": {
+              transform: "scale(0.98)",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
             },
           }}
           onClick={handleAddGoal}

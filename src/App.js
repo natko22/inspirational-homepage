@@ -43,21 +43,39 @@ const App = () => {
           <Grid container spacing={3}>
             {/* Left column with ToDoList and Quote */}
             <Grid item xs={12} md={6}>
-              <Box mb={3}>
-                <ToDoList />
-              </Box>
-              <Box>
-                <Quote />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box mb={3} sx={{ flex: 1 }}>
+                  <ToDoList />
+                </Box>
+                <Box sx={{ flex: 1 }}>
+                  <Quote />
+                </Box>
               </Box>
             </Grid>
 
             {/* Right column with Weather and BackgroundImage */}
             <Grid item xs={12} md={6}>
-              <Box mb={3}>
-                <Weather />
-              </Box>
-              <Box>
-                <BackgroundImage setBackgroundImage={setBackgroundImage} />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box mb={3} sx={{ flex: 1 }}>
+                  <Weather />
+                </Box>
+                <Box sx={{ flex: 1 }}>
+                  <BackgroundImage setBackgroundImage={setBackgroundImage} />
+                </Box>
               </Box>
             </Grid>
           </Grid>

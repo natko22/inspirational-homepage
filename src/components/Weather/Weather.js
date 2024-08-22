@@ -43,9 +43,8 @@ const Weather = () => {
     return (
       <CircularProgress
         sx={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
+          display: "block",
+          margin: "auto",
           color: "#FFFFFF",
         }}
       />
@@ -57,7 +56,7 @@ const Weather = () => {
       <Typography
         variant="h6"
         color="error"
-        sx={{ position: "absolute", top: "10px", right: "10px" }}
+        sx={{ textAlign: "center", color: "#FFFFFF" }}
       >
         Error: {error}
       </Typography>
@@ -69,9 +68,7 @@ const Weather = () => {
       <Typography
         variant="h6"
         sx={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
+          textAlign: "center",
           color: "#FFFFFF",
         }}
       >
@@ -86,28 +83,34 @@ const Weather = () => {
   return (
     <Box
       sx={{
-        position: "absolute",
-        // top: "12rem",
-        // right: "2rem",
-        textAlign: "right",
+        textAlign: "center",
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
         backgroundColor: "rgba(255, 255, 255, 0.302)",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
         borderRadius: "5px",
         padding: "20px",
-        width: "30%",
-        height: "22%",
+        width: { xs: "80%", md: "90%" },
+        margin: "0 auto",
+        minHeight: "210px",
+        maxHeight: "500px",
+        flexDirection: { xs: "column", md: "row" },
       }}
     >
-      <Box sx={{ marginRight: "8px" }}>
+      <Box
+        sx={{
+          marginRight: { md: "8px" },
+          marginBottom: { xs: "10px", md: "0" },
+        }}
+      >
         <img src={iconUrl} alt={weather.weather[0].description} />
       </Box>
       <Box>
         <Typography
           variant="h5"
           component="div"
-          sx={{ color: "black", textAlign: "right" }}
+          sx={{ color: "black", textAlign: "center" }}
         >
           Weather at your location
         </Typography>

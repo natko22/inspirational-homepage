@@ -41,21 +41,24 @@ const Quote = () => {
   return (
     <Box
       sx={{
-        width: "80%",
+        width: { xs: "73%", md: "80%" },
         padding: 5,
         borderRadius: 2,
         marginTop: "3rem",
+        marginLeft: -1,
         backgroundColor: "rgba(255, 255, 255, 0.302)",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-between",
-        minHeight: "100px",
+        justifyContent: "center",
+        minHeight: "180px",
+        maxHeight: "180px",
+        transition: "background-color 0.3s ease",
       }}
     >
       <Typography
-        variant="h5"
+        variant="h6"
         component="div"
         sx={{ color: "black", textAlign: "center" }}
       >
@@ -66,11 +69,19 @@ const Quote = () => {
         variant="contained"
         onClick={updateQuote}
         sx={{
-          backgroundColor: "#808080",
+          backgroundColor: "#E0E1DD",
           color: "black",
           marginTop: "1rem",
+
+          transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
           "&:hover": {
-            backgroundColor: "#696969",
+            backgroundColor: "#D1D3CF",
+            transform: "scale(1.05)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+          },
+          "&:active": {
+            transform: "scale(0.98)",
+            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
           },
         }}
       >

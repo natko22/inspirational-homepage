@@ -18,16 +18,14 @@ const BackgroundImage = ({ setBackgroundImage }) => {
   const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
-    // Fetch images on component mount with the default query ("nature")
     if (initialLoad) {
       console.log("Fetching initial images with default query...");
-      dispatch(fetchImages("nature"));
+      dispatch(fetchImages("moon"));
       setInitialLoad(false);
     }
   }, [dispatch, initialLoad]);
 
   useEffect(() => {
-    // Set the first image as the background when images are loaded
     if (images.length > 0) {
       console.log("Initial background image set:", images[0]?.urls?.regular);
       setBackgroundImage(images[0]?.urls?.regular);
@@ -53,10 +51,9 @@ const BackgroundImage = ({ setBackgroundImage }) => {
   };
 
   const handleSearch = () => {
-    // Use the default query if the input is empty
-    const searchQuery = query.trim() === "" ? "nature" : query;
+    const searchQuery = query.trim() === "" ? "moon" : query;
     dispatch(fetchImages(searchQuery));
-    setCurrentIndex(0); // Reset index when a new search is performed
+    setCurrentIndex(0);
   };
 
   const handleKeyPress = (e) => {
@@ -71,18 +68,17 @@ const BackgroundImage = ({ setBackgroundImage }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         backgroundColor: "rgba(255, 255, 255, 0.302)",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
-        marginTop: "19rem",
-        width: "92%",
-        minHeight: "180px",
-        // backgroundColor: "rgba(0, 0, 0, 0.5)",
+        marginTop: { xs: "10rem", md: "4rem" },
+        width: { xs: "82%", md: "92%" },
+        minHeight: "220px",
         padding: "20px",
         borderRadius: "8px",
       }}
     >
-      <Typography variant="h5" color="black" mb={2}>
+      <Typography variant="h5" color="black" mb={2} textAlign="center">
         Change the Background
       </Typography>
       <TextField
@@ -109,15 +105,23 @@ const BackgroundImage = ({ setBackgroundImage }) => {
           mb: 2,
         }}
       />
-      <Box sx={{ display: "flex", gap: 2 }}>
+      <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
         <Button
           variant="contained"
           onClick={changeBackground}
           sx={{
-            backgroundColor: "#808080",
+            backgroundColor: "#E0E1DD",
             color: "black",
+            transition:
+              "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
             "&:hover": {
-              backgroundColor: "#696969",
+              backgroundColor: "#D1D3CF", // Slightly darker shade on hover
+              transform: "scale(1.05)", // Slightly scale up the button on hover
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)", // Add shadow on hover
+            },
+            "&:active": {
+              transform: "scale(0.98)", // Slightly scale down when clicked
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)", // Reduce shadow on click
             },
           }}
           disabled={images.length === 0}
