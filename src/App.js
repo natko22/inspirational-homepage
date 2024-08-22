@@ -36,7 +36,6 @@ const App = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
-        color: "#CFE0C3",
         transition: "background-image 0.5s ease-in-out",
         backgroundColor: "#000",
       }}
@@ -48,15 +47,16 @@ const App = () => {
             <Grid item xs={12} md={6}>
               <Weather />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <BackgroundImage setBackgroundImage={setBackgroundImage} />
-            </Grid>
-            <Grid item xs={12}>
-              <Quote />
-            </Grid>
+
             <Grid item xs={12}>
               <ToDoList />
             </Grid>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <BackgroundImage setBackgroundImage={setBackgroundImage} />
+          </Grid>
+          <Grid item xs={12}>
+            <Quote />
           </Grid>
         </Box>
         {error && (

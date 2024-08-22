@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Box, Typography, Button, CircularProgress } from "@mui/material";
+import { Box, Typography, CircularProgress } from "@mui/material";
 import { fetchWeather } from "../../features/weatherSlice";
 
 const Weather = () => {
@@ -12,7 +12,6 @@ const Weather = () => {
   const [coordinates, setCoordinates] = useState(null);
 
   useEffect(() => {
-    // Get the user's current location
     const getLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -41,32 +40,77 @@ const Weather = () => {
   }, [coordinates, dispatch]);
 
   if (status === "loading") {
-    return <CircularProgress />;
+    return (
+      <CircularProgress
+        sx={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          color: "#FFFFFF",
+        }}
+      />
+    );
   }
 
   if (status === "failed") {
     return (
-      <Typography variant="h6" color="error">
+      <Typography
+        variant="h6"
+        color="error"
+        sx={{ position: "absolute", top: "10px", right: "10px" }}
+      >
         Error: {error}
       </Typography>
     );
   }
 
   if (!weather) {
-    return <Typography variant="h6">No weather data available</Typography>;
+    return (
+      <Typography
+        variant="h6"
+        sx={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          color: "#FFFFFF",
+        }}
+      >
+        No weather data available
+      </Typography>
+    );
   }
 
+  const iconCode = weather.weather[0].icon;
+  const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
   return (
-    <Box sx={{ backgroundColor: "#f0f0f0", padding: 2, borderRadius: 2 }}>
-      <Typography variant="h5" component="div" sx={{ color: "#1F363D" }}>
-        Weather at your location
-      </Typography>
-      <Typography variant="body1" sx={{ color: "#40798C" }}>
-        {weather.weather[0].description}
-      </Typography>
-      <Typography variant="body1" sx={{ color: "#40798C" }}>
-        {weather.main.temp}°C
-      </Typography>
+    <Box
+      sx={{
+        position: "absolute",
+        top: "8rem",
+        right: "2rem",
+        textAlign: "right",
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.75)",
+        borderRadius: "5px",
+        padding: "10px",
+      }}
+    >
+      <Box sx={{ marginRight: "8px" }}>
+        <img src={iconUrl} alt={weather.weather[0].description} />
+      </Box>
+      <Box>
+        <Typography variant="h5" component="div" sx={{ color: "#FFFFFF" }}>
+          Weather at your location
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#E0E0E0" }}>
+          {weather.weather[0].description}
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#E0E0E0" }}>
+          {weather.main.temp}°C
+        </Typography>
+      </Box>
     </Box>
   );
 };

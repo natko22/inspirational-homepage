@@ -1,17 +1,17 @@
 import React from "react";
 import { Typography, Box } from "@mui/material";
+import "./Header.css";
 
 const Header = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(0, 0, 0, 0.5)", // Black with 50% opacity
         padding: "10px",
-        borderRadius: "8px",
+        borderRadius: "2px",
         textAlign: "center",
       }}
     >
-      <Typography variant="h2" color="#CFE0C3">
+      <Typography className="header" variant="h1">
         Inspirational Homepage
       </Typography>
     </Box>

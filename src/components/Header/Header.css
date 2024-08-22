@@ -1,0 +1,13 @@
+/* @font-face {
+  font-family: "CascadiaCode-Bold";
+  src: url("/public//fonts//CascadiaCode-Bold.otf") format("opentype");
+} */
+@font-face {
+  font-family: "KramforsDemoRegular";
+  src: url("/public//fonts//KramforsDemoRegular.ttf") format("opentype");
+}
+
+.header {
+  font-family: "KramforsDemoRegular", "Times New Roman", Times, serif;
+  color: white;
+}

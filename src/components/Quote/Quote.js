@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Box, Typography, Button, CircularProgress } from "@mui/material";
 import { fetchQuote } from "../../features/quoteSlice";
+import "./Quote.css";
 
 const Quote = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Quote = () => {
   };
 
   if (status === "loading") {
-    return <CircularProgress />;
+    return <CircularProgress sx={{ color: "#FFFFFF" }} />;
   }
 
   if (status === "failed") {
@@ -30,18 +31,29 @@ const Quote = () => {
   }
 
   if (!quote) {
-    return <Typography variant="h6">No quote available</Typography>;
+    return (
+      <Typography variant="h6" sx={{ color: "#FFFFFF" }}>
+        No quote available
+      </Typography>
+    );
   }
 
   return (
-    <Box sx={{ backgroundColor: "#CFE0C3", padding: 2, borderRadius: 2 }}>
-      <Typography variant="h5" component="div" sx={{ color: "#1F363D" }}>
+    <Box
+      sx={{
+        backgroundColor: "rgba(0, 0, 0, 0.75)",
+        padding: 2,
+        borderRadius: 2,
+        marginTop: "10rem",
+      }}
+    >
+      <Typography variant="h5" component="div" sx={{ color: "#FFFFFF" }}>
         "{quote.content}" - <em>{quote.author}</em>
       </Typography>
       <Button
+        className="quote-button"
         variant="contained"
         onClick={updateQuote}
-        sx={{ marginTop: 2, backgroundColor: "#40798C", color: "#fff" }}
       >
         New Quote
       </Button>

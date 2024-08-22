@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addGoal, removeGoal, toggleGoal } from "../../features/todolistSlice";
 import {
-  List,
   ListItem,
   ListItemText,
   IconButton,
@@ -35,22 +34,17 @@ const ToDoList = () => {
   const handleToggleGoal = (id) => {
     dispatch(toggleGoal(id));
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 2000); // Hide confetti after 2 seconds
+    setTimeout(() => setShowConfetti(false), 2000);
   };
 
   const handleRemoveGoal = (id) => {
     dispatch(removeGoal(id));
   };
 
-  const getRandomColor = () => {
-    const colors = ["#1F363D", "#40798C", "#70A9A1", "#9EC1A3", "#CFE0C3"];
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
-
   return (
     <div>
       {showConfetti && <Confetti />}
-      <h2>Today's Goals</h2>
+      <h2 style={{ color: "#FFFFFF" }}>Today's Goals</h2>
       <TextField
         label="Write your goal"
         variant="outlined"
@@ -58,11 +52,29 @@ const ToDoList = () => {
         onChange={(e) => setInput(e.target.value)}
         onKeyPress={handleKeyPress}
         fullWidth
+        InputLabelProps={{ style: { color: "#E0E0E0" } }}
+        InputProps={{
+          style: { color: "#FFFFFF" },
+          sx: {
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#707070",
+            },
+            "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#FFFFFF",
+            },
+          },
+        }}
         style={{ marginBottom: "10px" }}
       />
       <Button
         variant="contained"
-        color="primary"
+        sx={{
+          backgroundColor: "#3A3A3A",
+          color: "#FFFFFF",
+          "&:hover": {
+            backgroundColor: "#707070",
+          },
+        }}
         onClick={handleAddGoal}
         style={{ marginBottom: "20px" }}
       >
@@ -73,7 +85,7 @@ const ToDoList = () => {
           <ListItem
             key={goal.id}
             style={{
-              backgroundColor: getRandomColor(),
+              backgroundColor: "#3A3A3A",
               textDecoration: goal.completed ? "line-through" : "none",
               color: "#FFFFFF",
               padding: "10px",
@@ -88,13 +100,13 @@ const ToDoList = () => {
             <div>
               <IconButton
                 onClick={() => handleToggleGoal(goal.id)}
-                color="inherit"
+                sx={{ color: "#E0E0E0" }}
               >
                 <CheckCircleOutlineIcon />
               </IconButton>
               <IconButton
                 onClick={() => handleRemoveGoal(goal.id)}
-                color="inherit"
+                sx={{ color: "#E0E0E0" }}
               >
                 <DeleteOutlineIcon />
               </IconButton>
